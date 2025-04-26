@@ -10,3 +10,6 @@ Feature: Logout Test
     Then The user logs out
 
 
+
+  Scenario: Logout button should not be visible without login
+    Then The user should not see the logout button
