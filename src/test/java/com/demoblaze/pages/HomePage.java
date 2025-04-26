@@ -5,9 +5,13 @@ import com.demoblaze.utilities.ConfigurationReader;
 import com.demoblaze.utilities.Driver;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+
+
 public class HomePage extends BasePage{
     @FindBy(id = "nameofuser")
     public WebElement nameofuser;
@@ -15,6 +19,28 @@ public class HomePage extends BasePage{
     public WebElement priceText;
     @FindBy(linkText = "Add to cart")
     public WebElement addToCartBtn;
+
+    public HomePage() {
+        PageFactory.initElements(Driver.get(), this);
+    }
+
+    @FindBy(id = "signin2")
+    public WebElement signUpButton;
+
+    @FindBy(id = "sign-username")
+    public WebElement signupUsername;
+
+    @FindBy(id = "sign-password")
+    public WebElement signupPassword;
+
+    @FindBy(xpath = "//button[text()='Sign up']")
+    public WebElement signupConfirmButton;
+
+
+
+
+
+
     public void verifyWelcomeMessage(){
         BrowserUtils.waitForVisibility(nameofuser,10);
         String actualMessage=nameofuser.getText();
@@ -52,4 +78,10 @@ public class HomePage extends BasePage{
         navigateToMenu("Home");
         return lastPrice;
     }
+
+    public void selectProduct(String productName) {
+        Driver.get().findElement(By.linkText(productName)).click();
+    }
+
 }
+

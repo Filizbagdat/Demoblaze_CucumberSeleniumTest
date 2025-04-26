@@ -70,4 +70,10 @@ public class CartPage extends BasePage {
     public void verifyPurchaseAmount(int expectedPurchaseAmount) {
         Assert.assertEquals(expectedPurchaseAmount, actualAmount);
     }
+
+    public void verifyProductInCart(String productName) {
+        BrowserUtils.waitFor(3);
+        String actualProduct = Driver.get().findElement(By.xpath("//td[2]")).getText();
+        Assert.assertEquals(productName, actualProduct);
+    }
 }

@@ -8,3 +8,5 @@ Feature: Logout Test
     Then The user verifies welcome message
     And The user clicks logout button
     Then The user logs out
+
+
