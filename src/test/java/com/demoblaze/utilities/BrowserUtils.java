@@ -45,7 +45,16 @@ public class BrowserUtils {
         new WebDriverWait(Driver.get(), Duration.ofSeconds(timeout))
                 .until(ExpectedConditions.visibilityOf(element)).sendKeys(text);
     }
-
+    public static void waitForAlertAndAccept() {
+        try {
+            WebDriverWait wait = new WebDriverWait(Driver.get(), Duration.ofSeconds(5));
+            wait.until(ExpectedConditions.alertIsPresent());
+            Alert alert = Driver.get().switchTo().alert();
+            alert.accept();
+        } catch (TimeoutException e) {
+            System.out.println("Alert bulunamadı.");
+        }
+    }
 }
 
 

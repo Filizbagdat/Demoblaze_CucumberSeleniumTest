@@ -1,87 +1,54 @@
 package com.demoblaze.pages;
 
-import com.demoblaze.utilities.BrowserUtils;
-import com.demoblaze.utilities.ConfigurationReader;
-import com.demoblaze.utilities.Driver;
+import com.demoblaze.utilities.*;
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
+import java.util.List;
 
-
-public class HomePage extends BasePage{
+public class HomePage extends BasePage {
     @FindBy(id = "nameofuser")
     public WebElement nameofuser;
-    @FindBy(css = "[class='price-container']")
-    public WebElement priceText;
-    @FindBy(linkText = "Add to cart")
-    public WebElement addToCartBtn;
+    @FindBy(xpath = "//a[text()='Phones']")
+    public WebElement phonesCategory;
+    @FindBy(xpath = "//a[text()='Laptops']")
+    public WebElement laptopsCategory;
+    @FindBy(xpath = "//a[text()='Monitors']")
+    public WebElement monitorsCategory;
+    @FindBy(xpath = "//div[@class='card-block']//h4[@class='card-title']/a")
+    public List<WebElement> productNames;
 
     public HomePage() {
         PageFactory.initElements(Driver.get(), this);
     }
-
-    @FindBy(id = "signin2")
-    public WebElement signUpButton;
-
-    @FindBy(id = "sign-username")
-    public WebElement signupUsername;
-
-    @FindBy(id = "sign-password")
-    public WebElement signupPassword;
-
-    @FindBy(xpath = "//button[text()='Sign up']")
-    public WebElement signupConfirmButton;
-
-
-
-
-
-
-    public void verifyWelcomeMessage(){
-        BrowserUtils.waitForVisibility(nameofuser,10);
-        String actualMessage=nameofuser.getText();
+    public void verifyWelcomeMessage() {
+        BrowserUtils.waitForVisibility(nameofuser, 10);
+        String actualMessage = nameofuser.getText();
         Assert.assertTrue(actualMessage.contains(ConfigurationReader.get("username")));
     }
-    public void verifyWelcomeMessage(String username){
-        BrowserUtils.waitForVisibility(nameofuser,10);
-        String actualMessage=nameofuser.getText();
+    public void verifyWelcomeMessage(String username) {
+        BrowserUtils.waitForVisibility(nameofuser, 10);
+        String actualMessage = nameofuser.getText();
         Assert.assertTrue(actualMessage.contains(username));
     }
-    public int addProduct(String product,String category){
-
-        try {
-            WebElement categoryMenu= Driver.get().findElement(By.linkText(category));
-            BrowserUtils.waitForClickablility(categoryMenu,5).click();
-        }catch (Exception e){
-            BrowserUtils.clickWithWait(By.linkText(category),5);
+    public void verifyProduct1() {
+        BrowserUtils.waitFor(3); // 2'den 3 saniyeye çıkardık
+        for (WebElement product : productNames) {
+            Assert.assertFalse("Product name is empty!", product.getText().trim().isEmpty());
         }
-        try {
-            WebElement productItem=Driver.get().findElement(By.linkText(product));
-            BrowserUtils.scrollToElement(productItem);
-            BrowserUtils.waitForClickablility(productItem,5).click();
-        }catch (Exception e){
-            BrowserUtils.clickWithWait(By.linkText(product),5);
+    }
+    public void verifyProduct2() {
+        BrowserUtils.waitFor(3); // 2'den 3 saniyeye çıkardık
+        for (WebElement product : productNames) {
+            Assert.assertFalse("Product name is empty!", product.getText().trim().isEmpty());
         }
-
-        String[] arrayAmount=priceText.getText().split(" ");
-        int lastPrice= Integer.parseInt(arrayAmount[0].substring(1));
-
-        addToCartBtn.click();
-        alert=wait.until(ExpectedConditions.alertIsPresent());
-        alert=Driver.get().switchTo().alert();
-        alert.accept();
-
-        navigateToMenu("Home");
-        return lastPrice;
     }
-
-    public void selectProduct(String productName) {
-        Driver.get().findElement(By.linkText(productName)).click();
+    public void verifyProduct3() {
+        BrowserUtils.waitFor(3); // 2'den 3 saniyeye çıkardık
+        for (WebElement product : productNames) {
+            Assert.assertFalse("Product name is empty!", product.getText().trim().isEmpty());
+        }
     }
-
 }
 

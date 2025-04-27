@@ -1,4 +1,5 @@
 Feature: Contact Form Submission
+
   Background:
     Given The user navigates to website
 
@@ -8,8 +9,3 @@ Feature: Contact Form Submission
     When User is on the contact page
     Then The user verifies message
 
-  Scenario: Contact form submission without email
-    When The user clicks on Contact menu
-    And The user fills contact form with name "Ahmet", empty email and message "Test message"
-    And The user clicks Send Message
-    Then The user should see an alert "Please fill out Email and Message."

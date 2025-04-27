@@ -4,7 +4,8 @@ import com.demoblaze.utilities.*;
 import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
-
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import java.util.List;
 public class CartPage extends BasePage {
     int actualAmount;
     @FindBy(xpath = "//button[.='Place Order']")
@@ -27,7 +28,46 @@ public class CartPage extends BasePage {
     public WebElement confirmation;
     @FindBy(xpath = "//button[.='OK']")
     public WebElement ok;
+    @FindBy(xpath = "//tr[@class='success']/td[3]")
+    public WebElement cartProductPrice;
+    @FindBy(xpath = "//tr[@class='success']")
+    public List<WebElement> cartProductRows;
+    @FindBy(css = "[class='price-container']")
+    public WebElement priceText;
+    @FindBy(linkText = "Add to cart")
+    public WebElement addToCartBtn;
+    @FindBy(xpath = "(//a[@class='hrefch'])[1]")
+    public WebElement firstProduct;
+    @FindBy(id = "cartur")
+    public WebElement cartButton;
 
+    public int addProduct(String product, String category) {
+
+        try {
+            WebElement categoryMenu = Driver.get().findElement(By.linkText(category));
+            BrowserUtils.waitForClickablility(categoryMenu, 5).click();
+        } catch (Exception e) {
+            BrowserUtils.clickWithWait(By.linkText(category), 5);
+        }
+        try {
+            WebElement productItem = Driver.get().findElement(By.linkText(product));
+            BrowserUtils.scrollToElement(productItem);
+            BrowserUtils.waitForClickablility(productItem, 5).click();
+        } catch (Exception e) {
+            BrowserUtils.clickWithWait(By.linkText(product), 5);
+        }
+
+        String[] arrayAmount = priceText.getText().split(" ");
+        int lastPrice = Integer.parseInt(arrayAmount[0].substring(1));
+
+        addToCartBtn.click();
+        alert = wait.until(ExpectedConditions.alertIsPresent());
+        alert = Driver.get().switchTo().alert();
+        alert.accept();
+
+        navigateToMenu("Home");
+        return lastPrice;
+    }
     public int removeProduct(String product) {
         BrowserUtils.waitFor(10);
         navigateToMenu("Cart");
@@ -42,7 +82,14 @@ public class CartPage extends BasePage {
         Driver.get().findElement(By.xpath(deletePath)).click();
         return Integer.parseInt(priceText);
     }
-
+    void fillForm() {
+        BrowserUtils.waitAndSendKeys(name, faker.name().fullName(), 5);
+        BrowserUtils.waitAndSendKeys(country, faker.country().name(), 5);
+        BrowserUtils.waitAndSendKeys(city, faker.country().capital(), 5);
+        BrowserUtils.waitAndSendKeys(card, faker.finance().creditCard(), 5);
+        BrowserUtils.waitAndSendKeys(month, String.valueOf(faker.number().numberBetween(1, 12)), 5);
+        BrowserUtils.waitAndSendKeys(year, String.valueOf(faker.number().numberBetween(2024, 2030)), 5);
+    }
     public void finishPurchase_logAmount() {
         BrowserUtils.waitFor(1);
         placeOrderBtn.click();
@@ -57,23 +104,19 @@ public class CartPage extends BasePage {
         BrowserUtils.waitFor(1);
         ok.click();
     }
-
-    void fillForm() {
-        BrowserUtils.waitAndSendKeys(name, faker.name().fullName(), 5);
-        BrowserUtils.waitAndSendKeys(country, faker.country().name(), 5);
-        BrowserUtils.waitAndSendKeys(city, faker.country().capital(), 5);
-        BrowserUtils.waitAndSendKeys(card, faker.finance().creditCard(), 5);
-        BrowserUtils.waitAndSendKeys(month, String.valueOf(faker.number().numberBetween(1, 12)), 5);
-        BrowserUtils.waitAndSendKeys(year, String.valueOf(faker.number().numberBetween(2024, 2030)), 5);
-    }
-
     public void verifyPurchaseAmount(int expectedPurchaseAmount) {
         Assert.assertEquals(expectedPurchaseAmount, actualAmount);
     }
-
     public void verifyProductInCart(String productName) {
         BrowserUtils.waitFor(3);
         String actualProduct = Driver.get().findElement(By.xpath("//td[2]")).getText();
         Assert.assertEquals(productName, actualProduct);
     }
-}
+    public void verifyCartEmpty() {
+        cartButton.click();
+        BrowserUtils.waitFor(2);
+
+        List<WebElement> cartItems = cartProductRows;
+        Assert.assertTrue("Cart is not empty after purchase!", cartItems.isEmpty());
+    }
+    }

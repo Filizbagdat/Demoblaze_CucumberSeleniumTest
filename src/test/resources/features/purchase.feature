@@ -4,7 +4,7 @@ Feature: The user should be able to place order from web page
     Given The user navigates to website
 
   Scenario: Placing a successfully order
-    When The user clicks on login button and enters "Edel" and "Test1234"
+    When The user clicks on login button and enters "Ema" and "Test1234"
     And The user adds "Samsung galaxy s7" product from "Phones" category
     And The user adds "Sony vaio i5" product from "Laptops" category
     And The user adds "MacBook Pro" product from "Laptops" category
@@ -13,6 +13,13 @@ Feature: The user should be able to place order from web page
     And The user places order and capture and log amount
     Then The user verifies purchase amount
 
+
+  Scenario: User completes a purchase and verifies the cart is empty
+    When The user clicks on login button and enters "Ema" and "Test1234"
+    And The user adds "Samsung galaxy s7" product from "Phones" category
+    And User navigates to the cart page
+    And The user places order and capture and log amount
+    Then User verifies that the cart is empty after the purchase
 
 
 

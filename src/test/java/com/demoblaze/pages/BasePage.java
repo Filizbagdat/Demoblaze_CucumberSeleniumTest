@@ -14,12 +14,18 @@ public abstract class BasePage {
     public Alert alert;
     public WebDriverWait wait=new WebDriverWait(Driver.get(), Duration.ofSeconds(10));
     public Faker faker=new Faker();
-    @FindBy(id = "login2")
-    public WebElement homePage_loginBtn;
 
     public void navigateToMenu(String menu){
         By l_menu=By.partialLinkText(menu);
         wait.until(ExpectedConditions.visibilityOfElementLocated(l_menu)).click();
     }
 }
+
+
+
+
+
+
+
+
 

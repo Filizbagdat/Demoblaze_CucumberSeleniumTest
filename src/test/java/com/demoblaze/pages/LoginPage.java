@@ -9,6 +9,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class LoginPage extends BasePage {
+    @FindBy(id = "login2")
+    public WebElement homePage_loginBtn;
     @FindBy(id = "loginusername")
     public WebElement loginusername;
     @FindBy(id = "loginpassword")

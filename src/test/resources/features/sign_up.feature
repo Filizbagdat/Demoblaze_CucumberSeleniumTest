@@ -1,4 +1,4 @@
-Feature: User signup process
+Feature: User_signup Process
 
   Background:
     Given The user navigates to website
@@ -11,6 +11,6 @@ Feature: User signup process
 
   Scenario: User signs up with existing credentials
     When The user clicks on Sign up button
-    And The user enters username "Edel" and password "Test1234"
+    And The user enters username "Ema" and password "Test1234"
     And The user clicks Sign up to submit
     Then The user should see an alert saying "This user already exist."
