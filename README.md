@@ -23,12 +23,7 @@ created to test key functionalities of the [Demoblaze](https://www.demoblaze.com
 src
 ├── main
 │   └── java
-│       └── com.demoblaze.pages
-│           ├── BasePage.java         
-│           ├── CartPage.java        
-│           ├── HomePage.java          
-│           ├── LoginPage.java         
-│           └── LogoutPage.java        
+│       └──     
 │
 ├── test
 │   └── java
