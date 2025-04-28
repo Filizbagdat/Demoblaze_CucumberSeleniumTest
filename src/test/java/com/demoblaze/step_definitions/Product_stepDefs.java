@@ -42,7 +42,7 @@ public class Product_stepDefs {
     public void the_product_price_in_the_cart_should_match_the_product_page_price() {
        productPage.priceControl();
     }
-    @When("User clicks on the Phones category")
+   /* @When("User clicks on the Phones category")
     public void user_clicks_on_the_phones_category() {
         homePage.phonesCategory.click();
     }
@@ -65,11 +65,17 @@ public class Product_stepDefs {
     @Then("User verifies that monitors are displayed")
     public void user_verifies_that_monitors_are_displayed() {
       homePage.verifyProduct3();
-    }
+    }*/
     @Then("User verifies that product details page is displayed")
     public void user_verifies_that_product_details_page_is_displayed() {
         BrowserUtils.waitFor(2);
         Assert.assertTrue("Product name is not displayed!", productPage.productName.isDisplayed());
+    }@When("the user clicks on the {string} category")
+    public void the_user_clicks_on_the_category(String category) {
+        productPage.clickCategory(category);
+    }@Then("the user should see products in the {string} category")
+    public void the_user_should_see_products_in_the_category(String category) {
+       Assert. assertTrue(productPage.isCategoryDisplayed(category));
     }
 }
 
