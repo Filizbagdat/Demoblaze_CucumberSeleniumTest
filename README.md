@@ -1,4 +1,3 @@
-`
 # Demoblaze Automation Testing with Selenium & Cucumber
 
 This project is a test automation framework built using *Selenium WebDriver, **Cucumber (BDD), and **Java/Maven*, designed to automate key functionalities of the [Demoblaze](https://www.demoblaze.com/) website.
@@ -70,19 +69,18 @@ resources
 ## 🚀 How to Run Tests
 
 1. *Clone the repository*:
-   bash
+   
    git clone https://github.com/Filizbagdat/Demoblaze_CucumberSeleniumTest
 
 
 2. *Navigate to the project directory*:
-   bash
+   
    cd Demoblaze_CucumberSeleniumTest
 
 
 3. *Run the tests using Maven*:
-   bash
+  
    mvn test
-
 
 ---
 
@@ -109,4 +107,3 @@ resources
 
 ---
 
-`
