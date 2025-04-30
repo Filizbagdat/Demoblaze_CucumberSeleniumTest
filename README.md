@@ -1,4 +1,4 @@
-
+`
 # Demoblaze Automation Testing with Selenium & Cucumber
 
 This project is a test automation framework built using *Selenium WebDriver, **Cucumber (BDD), and **Java/Maven*, designed to automate key functionalities of the [Demoblaze](https://www.demoblaze.com/) website.
@@ -30,36 +30,40 @@ This project is a test automation framework built using *Selenium WebDriver, **C
 
 ## 📁 Project Structure
 
-
 src
-├── main
-│   └── java
-│       └── com.demoblaze
-│           ├── runners
-│           │   └── CukesRunner.java
-│           ├── step_definitions
-│           │   ├── Hooks.java
-│           │   ├── Login_stepDefs.java
-│           │   ├── Logout_stepDefs.java
-│           │   ├── Purchase_stepDefs.java
-│           │   ├── ProductPage_stepDefs.java
-│           │   ├── CartPage_stepDefs.java
-│           │   ├── SignUp_stepDefs.java  
-│           │   └── ContactPage_stepDefs.java  
-│           └── utilities
-│               ├── BrowserUtils.java
-│               ├── ConfigurationReader.java
-│               └── Driver.java
-└── resources
-└── features
-├── login.feature
-├── purchase.feature
-├── productPage.feature
-├── cartPage.feature
-├── signUp.feature  
-├── logout.feature  
-└── contact.feature
+├── pages
+│   ├── BasePage.java
+│   ├── CartPage.java
+│   ├── ContactPage.java
+│   ├── HomePage.java
+│   ├── LoginPage.java
+│   ├── LogoutPage.java
+│   ├── ProductPage.java
+│   └── SignUpPage.java
+├── runners
+│   └── (Runner classes here)
+├── step_definitions
+│   ├── Cart_stepDefs.java
+│   ├── ContactForm_stepDefs.java
+│   ├── Hooks.java
+│   ├── Login_stepDefs.java
+│   ├── Logout_stepDefs.java
+│   ├── Product_stepDefs.java
+│   ├── Purchase_stepDefs.java
+│   └── SignUp_stepDefs.java
+└── utilities
+└── (Reusable utility classes)
 
+
+resources
+└── features
+├── cart.feature
+├── contact_form.feature
+├── login.feature
+├── logout.feature
+├── product.feature
+├── purchase.feature
+└── sign_up.feature
 
 ---
 
@@ -105,3 +109,4 @@ src
 
 ---
 
+`
