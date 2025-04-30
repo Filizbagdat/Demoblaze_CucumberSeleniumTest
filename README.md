@@ -1,38 +1,35 @@
+
 # Demoblaze Automation Testing with Selenium & Cucumber
 
-This project is a test automation framework built using Selenium WebDriver, Cucumber (BDD), and Java/Maven, created to automate testing for key functionalities of the Demoblaze website.
+This project is a test automation framework built using *Selenium WebDriver, **Cucumber (BDD), and **Java/Maven*, designed to automate key functionalities of the [Demoblaze](https://www.demoblaze.com/) website.
 
-📌 Features Tested
+---
 
-🔐 Login Functionality
+## 📌 Features Tested
 
-🛒 Product Purchase Flow
+- 🔐 *Login Functionality*
+- 🛒 *Product Purchase Flow*
+- 🚪 *Logout Functionality*
+- 🛍 *Product Page*
+- 🛒 *Cart Page*
+- 📝 *Sign-Up Page Functionality*
+- 📞 *Contact Page Functionality*
 
-🚪 Logout Functionality
+---
 
-🛍️ Product Page
+## 🛠 Tech Stack
 
-🛒 Cart Page
+- Java
+- Selenium WebDriver
+- Cucumber (BDD)
+- Maven
+- JUnit
+- Page Object Model (POM) Design Pattern
 
-📝 Sign-Up Page Functionality
+---
 
-📞 Contact Page Functionality
+## 📁 Project Structure
 
-🛠️ Tech Stack
-
-Java
-
-Selenium WebDriver
-
-Cucumber (BDD)
-
-Maven
-
-JUnit
-
-Page Object Model (POM) Design Pattern
-
-📁 Project Structure
 
 src
 ├── main
@@ -43,7 +40,7 @@ src
 │           ├── step_definitions
 │           │   ├── Hooks.java
 │           │   ├── Login_stepDefs.java
-│           │   ├── Logout_stepDefs.java 
+│           │   ├── Logout_stepDefs.java
 │           │   ├── Purchase_stepDefs.java
 │           │   ├── ProductPage_stepDefs.java
 │           │   ├── CartPage_stepDefs.java
@@ -61,31 +58,50 @@ src
 ├── cartPage.feature
 ├── signUp.feature  
 ├── logout.feature  
-└── contact.feature 
+└── contact.feature
 
-🚀 How to Run Tests
 
-Clone the repository:
-git clone https://github.com/Filizbagdat/Demoblaze_CucumberSeleniumTest
+---
 
-Navigate to the project directory:
-cd Demoblaze_CucumberSeleniumTest
+## 🚀 How to Run Tests
 
-Run the tests using Maven:
-mvn test
+1. *Clone the repository*:
+   bash
+   git clone https://github.com/Filizbagdat/Demoblaze_CucumberSeleniumTest
 
-🔧 Configuration
 
-Ensure Java and Maven are installed on your machine.
+2. *Navigate to the project directory*:
+   bash
+   cd Demoblaze_CucumberSeleniumTest
 
-Configure Driver.java for browser settings (e.g., ChromeDriver).
 
-Update ConfigurationReader.java for environment-specific configurations (e.g., base URL, credentials).
+3. *Run the tests using Maven*:
+   bash
+   mvn test
 
-📝 Notes
 
-The framework uses Cucumber for behavior-driven development (BDD), where feature files describe the behavior in natural language.
+---
 
-The Page Object Model (POM) design pattern is employed for better maintainability of tests.
+## 🔧 Configuration
 
-Tests are run using JUnit.
+- Ensure *Java* and *Maven* are installed on your machine.
+- Configure Driver.java for browser settings (e.g., ChromeDriver).
+- Update ConfigurationReader.java for environment-specific configurations such as *base URL* and *user credentials*.
+
+---
+
+## 📝 Notes
+
+- The framework follows *Behavior-Driven Development (BDD)* principles, using Cucumber feature files to describe behavior in plain English.
+- The *Page Object Model (POM)* design pattern is applied for better maintainability and scalability.
+- *JUnit* is used as the test runner for executing scenarios.
+
+---
+
+## 👤 Author
+
+*Filiz Bagdatli*  
+🔗 [LinkedIn](https://www.linkedin.com/in/filizbagdatli/) 
+
+---
+
