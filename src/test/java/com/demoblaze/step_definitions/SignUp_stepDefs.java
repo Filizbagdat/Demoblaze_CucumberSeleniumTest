@@ -2,8 +2,7 @@ package com.demoblaze.step_definitions;
 
 import com.demoblaze.pages.SignUpPage;
 import com.demoblaze.utilities.BrowserUtils;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
+import io.cucumber.java.en.*;
 
 public class SignUp_stepDefs {
 

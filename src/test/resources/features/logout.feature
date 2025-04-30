@@ -3,7 +3,7 @@ Feature: Logout Test
   Background:
     Given The user navigates to website
 
-  Scenario:  logout test
+  Scenario:  Logout test
     When The user clicks login button and enters valid credentials
     Then The user verifies welcome message
     And The user clicks logout button

@@ -1,8 +1,7 @@
 package com.demoblaze.step_definitions;
 
 import com.demoblaze.pages.CartPage;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
+import io.cucumber.java.en.*;
 
 public class Purchase_stepDefs {
     CartPage cartPage=new CartPage();
