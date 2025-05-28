@@ -1,4 +1,3 @@
-@login
 Feature: Login Test
 
   Background:
